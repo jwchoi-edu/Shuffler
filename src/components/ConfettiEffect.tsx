@@ -28,17 +28,16 @@ const ConfettiEffect: React.FC<ConfettiEffectProps> = ({ active }) => {
       ]
       const newParticles: Particle[] = Array.from({ length: 60 }).map(
         (_, i) => ({
-          id: Date.now() + i, // 고유 ID 보장
+          id: Date.now() + i,
           left: `${Math.random() * 100}%`,
           delay: `${Math.random() * 0.4}s`,
           color: colors[Math.floor(Math.random() * colors.length)],
-          size: `${Math.random() * 10 + 6}px`, // 가루가 더 풍성해 보이도록 최소/최대 크기 소폭 업
-          tx: `${(Math.random() - 0.5) * 350}px`, // 더 멀리 사방으로 퍼지도록 분산도 확장
+          size: `${Math.random() * 10 + 6}px`,
+          tx: `${(Math.random() - 0.5) * 350}px`,
         }),
       )
       setParticles(newParticles)
 
-      // 애니메이션이 끝나면 메모리 확보를 위해 상태 비우기
       const timer = setTimeout(() => {
         setParticles([])
       }, 2500)

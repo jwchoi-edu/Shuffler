@@ -131,7 +131,6 @@ const App: React.FC = () => {
   return (
     <div className="h-screen max-h-screen bg-slate-50 text-slate-800 flex flex-col overflow-hidden select-none relative">
       <ConfettiEffect active={isJustFinished} />
-      {/* 💡 메인 영역: 좌석 그리드가 화면 전체를 쾌적하게 차지함 */}
       <main className="flex-1 w-full flex items-center justify-center overflow-hidden p-6">
         {hasValueError ? (
           <div className="text-center text-slate-400 font-medium text-lg">
@@ -151,9 +150,7 @@ const App: React.FC = () => {
         )}
       </main>
 
-      {/* 💡 하단 컨트롤 바: 설정과 셔플 버튼을 일렬로 배치 */}
       <footer className="bg-white border-t border-slate-200 p-4 shrink-0 shadow-sm flex items-center justify-center gap-6">
-        {/* 행 입력 */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <label className="text-xs font-bold text-slate-500 whitespace-nowrap">
@@ -175,8 +172,7 @@ const App: React.FC = () => {
             />
           </div>
 
-          {/* 중앙 메인 버튼 / 카운트다운 */}
-          <div className="min-w-45 flex justify-center">
+          <div className="min-w-45 min-h-9 flex justify-center">
             {isShuffling ? (
               <div className="flex items-center gap-3">
                 <span className="text-xs font-bold text-violet-500 tracking-wider animate-pulse">
@@ -201,7 +197,6 @@ const App: React.FC = () => {
             )}
           </div>
 
-          {/* 열 입력 */}
           <div className="flex items-center gap-2">
             <label className="text-xs font-bold text-slate-500 whitespace-nowrap">
               열
@@ -222,7 +217,6 @@ const App: React.FC = () => {
             />
           </div>
         </div>
-        {/* 💡 우하단: 깃허브 로고 및 제작자 표시 */}
         <div className="hidden md:flex absolute right-6 items-center">
           <a
             href="https://github.com/jwchoi-edu/Shuffler"

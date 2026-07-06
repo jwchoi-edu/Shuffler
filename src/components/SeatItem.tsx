@@ -69,10 +69,8 @@ const SeatItem: React.FC<SeatItemProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      // 💡 aspect-square와 w-full을 통하여 부모 격자 크기에 100% 맞춰 반응하게 만듭니다.
       className={`relative w-full aspect-square border rounded-lg flex items-center justify-center select-none transition-all duration-150 ${bgClass} ${dragOverClass} ${shuffleAnimationClass}`}
     >
-      {/* 상단 버튼 레이어 - 유연하게 고정 */}
       <div className="absolute top-1 left-1 right-1 flex justify-between items-center opacity-40 hover:opacity-100 transition-opacity z-10">
         <button
           onClick={(e) => {
@@ -105,10 +103,8 @@ const SeatItem: React.FC<SeatItemProps> = ({
         </button>
       </div>
 
-      {/* 중앙 메인 번호 - 글자가 아주 좁은 칸에서도 안 깨지도록 텍스트 크기 가변 유연성 유지 */}
       <span
         className={`pointer-events-none pt-2 font-bold transition-all duration-150 ${
-          // 기본 모바일에서 text-2xl, 큰 화면(md)에서 최대 text-5xl까지 확장
           isExcluded
             ? 'text-2xl sm:text-3xl md:text-4xl text-rose-400'
             : isPinned

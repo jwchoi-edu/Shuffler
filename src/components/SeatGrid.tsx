@@ -30,7 +30,6 @@ const SeatGrid: React.FC<SeatGridProps> = ({
       }`}
       style={{
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-        // 💡 좌우/상하 꽉 차게 조절하되, 좌석 배치 비율(가로/세로 비율)을 80vh 한도 내에서 극대화
         maxWidth: `calc(${cols} / ${rows} * 78vh)`,
         maxHeight: '100%',
       }}
