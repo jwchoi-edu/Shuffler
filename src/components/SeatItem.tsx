@@ -72,7 +72,6 @@ const SeatItem: React.FC<SeatItemProps> = ({
       className={`relative w-full aspect-square border rounded-lg flex items-center justify-center select-none transition-all duration-150 ${bgClass} ${dragOverClass} ${shuffleAnimationClass}`}
     >
       <div className="absolute top-1 left-1 right-1 flex justify-between items-center opacity-50 hover:opacity-100 transition-opacity z-10">
-        {' '}
         <button
           onClick={(e) => {
             e.stopPropagation()
