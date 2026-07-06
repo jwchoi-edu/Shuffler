@@ -71,14 +71,15 @@ const SeatItem: React.FC<SeatItemProps> = ({
       onDrop={handleDrop}
       className={`relative w-full aspect-square border rounded-lg flex items-center justify-center select-none transition-all duration-150 ${bgClass} ${dragOverClass} ${shuffleAnimationClass}`}
     >
-      <div className="absolute top-1 left-1 right-1 flex justify-between items-center opacity-40 hover:opacity-100 transition-opacity z-10">
+      <div className="absolute top-1 left-1 right-1 flex justify-between items-center opacity-50 hover:opacity-100 transition-opacity z-10">
+        {' '}
         <button
           onClick={(e) => {
             e.stopPropagation()
             onToggleExclude(id)
           }}
           disabled={isShuffling}
-          className={`w-5 h-5 rounded-xs text-[12px] flex items-center justify-center font-extrabold transition-colors cursor-pointer disabled:cursor-not-allowed ${
+          className={`w-5 h-5 rounded-md text-[10px] flex items-center justify-center font-extrabold transition-colors cursor-pointer disabled:cursor-not-allowed ${
             isExcluded
               ? 'bg-rose-500 text-white'
               : 'bg-slate-200 hover:bg-rose-100 text-slate-600'
@@ -86,14 +87,13 @@ const SeatItem: React.FC<SeatItemProps> = ({
         >
           ✕
         </button>
-
         <button
           onClick={(e) => {
             e.stopPropagation()
             onTogglePin(id)
           }}
           disabled={isShuffling || isExcluded}
-          className={`w-5 h-5 rounded-xs text-[12px] flex items-center justify-center transition-colors cursor-pointer disabled:cursor-not-allowed ${
+          className={`w-5 h-5 rounded-md text-[10px] flex items-center justify-center transition-colors cursor-pointer disabled:cursor-not-allowed ${
             isPinned
               ? 'bg-amber-500 text-white'
               : 'bg-slate-200 hover:bg-amber-100 text-slate-600'
