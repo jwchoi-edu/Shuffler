@@ -25,9 +25,7 @@ const SeatGrid: React.FC<SeatGridProps> = ({
 }) => {
   return (
     <div
-      className={`grid gap-2.5 w-full h-full items-center justify-center justify-items-center transition-all ${
-        isJustFinished ? 'animate-pop-success' : ''
-      }`}
+      className="grid gap-2.5 w-full h-full items-center justify-center justify-items-center"
       style={{
         gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
         maxWidth: `calc(${cols} / ${rows} * 78vh)`,
@@ -40,6 +38,7 @@ const SeatGrid: React.FC<SeatGridProps> = ({
           seat={seat}
           isShuffling={isShuffling}
           onToggleExclude={onToggleExclude}
+          isJustFinished={isJustFinished}
           onTogglePin={onTogglePin}
           onDragAndDrop={onDragAndDrop}
         />

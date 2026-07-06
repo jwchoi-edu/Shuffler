@@ -4,6 +4,7 @@ import type { Seat } from '../App'
 interface SeatItemProps {
   seat: Seat
   isShuffling: boolean
+  isJustFinished: boolean
   onToggleExclude: (id: number) => void
   onTogglePin: (id: number) => void
   onDragAndDrop: (sourceId: number, targetId: number) => void
@@ -12,6 +13,7 @@ interface SeatItemProps {
 const SeatItem: React.FC<SeatItemProps> = ({
   seat,
   isShuffling,
+  isJustFinished,
   onToggleExclude,
   onTogglePin,
   onDragAndDrop,
@@ -21,6 +23,9 @@ const SeatItem: React.FC<SeatItemProps> = ({
 
   const shuffleAnimationClass =
     isShuffling && !isPinned && !isExcluded ? 'animate-shuffle-shake' : ''
+
+    const finishAnimationClass =
+    isJustFinished && !isPinned && !isExcluded ? 'animate-pop-success' : ''
 
   const handleDragStart = (e: React.DragEvent) => {
     if (isExcluded || isShuffling) {
@@ -69,7 +74,7 @@ const SeatItem: React.FC<SeatItemProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      className={`relative w-full aspect-square border rounded-lg flex items-center justify-center select-none transition-all duration-150 ${bgClass} ${dragOverClass} ${shuffleAnimationClass}`}
+      className={`relative w-full aspect-square border rounded-lg flex items-center justify-center select-none transition-colors duration-150 ${bgClass} ${dragOverClass} ${shuffleAnimationClass} ${finishAnimationClass}`}
     >
       <div className="absolute top-1 left-1 right-1 flex justify-between items-center opacity-50 hover:opacity-100 transition-opacity z-10">
         <button

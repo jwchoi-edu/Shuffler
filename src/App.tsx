@@ -188,10 +188,7 @@ const App: React.FC = () => {
           <div className="min-w-45 min-h-9 flex justify-center">
             {isShuffling ? (
               <div className="flex items-center gap-3">
-                <span className="text-xs font-bold text-violet-500 tracking-wider animate-pulse">
-                  셔플 중
-                </span>
-                <span className="text-2xl font-black text-violet-600 animate-bounce">
+                <span className="text-3xl font-black text-violet-600 animate-count-bounce">
                   {countdown}
                 </span>
               </div>

@@ -26,11 +26,11 @@ const ConfettiEffect: React.FC<ConfettiEffectProps> = ({ active }) => {
         '#a855f7',
         '#ef4444',
       ]
-      const newParticles: Particle[] = Array.from({ length: 60 }).map(
+      const newParticles: Particle[] = Array.from({ length: 240 }).map(
         (_, i) => ({
           id: Date.now() + i,
           left: `${Math.random() * 100}%`,
-          delay: `${Math.random() * 0.4}s`,
+          delay: `${Math.random() * 0.8}s`,
           color: colors[Math.floor(Math.random() * colors.length)],
           size: `${Math.random() * 10 + 6}px`,
           tx: `${(Math.random() - 0.5) * 350}px`,

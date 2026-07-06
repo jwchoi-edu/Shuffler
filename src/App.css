@@ -27,14 +27,14 @@
   box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15); /* 바이올렛 빛 그림자 */
   border-color: #a78bfa !important; /* violet-400 */
 }
-/* 방금 배치가 끝났을 때 뿜어져 나오는 임팩트 애니메이션 */
+
 @keyframes pop-success {
   0% {
     transform: scale(1);
     filter: brightness(1);
   }
   30% {
-    transform: scale(1.03);
+    transform: scale(1.1);
     filter: brightness(1.2);
   }
   100% {
@@ -55,7 +55,7 @@
 }
 
 .animate-pop-success {
-  animation: pop-success 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: pop-success 0.5s ease-out forwards;
 }
 
 .animate-fade-in {
@@ -80,4 +80,20 @@
 
 .animate-confetti-fall {
   animation: confetti-fall 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes count-bounce {
+  0%, 100% {
+    transform: translateY(7px);
+    animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1); /* 내려올 때 부드럽게 감속 */
+  }
+  40% {
+    transform: translateY(-7px); /* 튀어오르는 높이 */
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); /* 올라갈 때 중력 가속도 */
+  }
+}
+
+.animate-count-bounce {
+  /* 💡 카운트다운 초시계와 완벽히 일치하도록 1초 주기로 무한 반복합니다. */
+  animation: count-bounce 1s infinite;
 }
