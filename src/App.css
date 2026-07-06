@@ -1,0 +1,89 @@
+/* 셔플링 상태에서 시각적으로 마구 섞이는 느낌을 주는 키프레임 애니메이션 */
+@keyframes shuffle-shake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 1px) rotate(-1deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg) scale(0.98);
+  }
+  60% {
+    transform: translate(-1px, 2px) rotate(0deg);
+    filter: hue-rotate(45deg);
+  }
+  80% {
+    transform: translate(2px, 1px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+}
+
+.animate-shuffle-shake {
+  animation: shuffle-shake 0.25s infinite ease-in-out;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15); /* 바이올렛 빛 그림자 */
+  border-color: #a78bfa !important; /* violet-400 */
+}
+/* 방금 배치가 끝났을 때 뿜어져 나오는 임팩트 애니메이션 */
+@keyframes pop-success {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  30% {
+    transform: scale(1.03);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pop-success {
+  animation: pop-success 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* 기존 애니메이션 아래에 추가 */
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) translateX(0) rotateX(0deg) rotateY(0deg);
+    opacity: 1;
+  }
+  10% {
+    /* 초반에 위로 살짝 솟구치며 좌우 무작위 X축 값으로 퍼짐 */
+    transform: translateY(4vh) translateX(calc(var(--tw-tx) * 0.3))
+      rotateX(180deg) rotateY(90deg);
+  }
+  100% {
+    /* 아래로 하강하면서 Y축 화면 밖으로 나가고 뱅글뱅글 회전 */
+    transform: translateY(105vh) translateX(var(--tw-tx)) rotateX(720deg)
+      rotateY(360deg);
+    opacity: 0.3;
+  }
+}
+
+.animate-confetti-fall {
+  /* 2초 동안 부드럽게 떨어지되 가속도가 붙는 포물선 느낌 유도 */
+  animation: confetti-fall 2.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
