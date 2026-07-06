@@ -132,7 +132,6 @@ const App: React.FC = () => {
         }
       })
 
-      // 💡 6. 최종 상태 반영 및 종료
       setSeats(nextSeats)
       setIsShuffling(false)
       setIsJustFinished(true)
