@@ -106,20 +106,34 @@ const App: React.FC = () => {
     if (isShuffling && countdown > 0) {
       timer = setTimeout(() => setCountdown((prev) => prev - 1), 1000)
     } else if (isShuffling && countdown === 0) {
-      const targetSeats = seats.filter((s) => !s.isPinned && !s.isExcluded)
-      const shuffledNumbers = targetSeats
-        .map((s) => s.displayNumber)
-        .sort(() => Math.random() - 0.5)
+      const nextSeats = [...seats]
 
-      let shuffleIndex = 0
-      const finalSeats = seats.map((seat) => {
-        if (!seat.isPinned && !seat.isExcluded) {
-          return { ...seat, displayNumber: shuffledNumbers[shuffleIndex++] }
+      const targetIndices: number[] = []
+
+      for (const [index, seat] of nextSeats.entries())
+        if (!seat.isPinned && !seat.isExcluded) targetIndices.push(index)
+
+      const targetNumbers = targetIndices.map(
+        (idx) => nextSeats[idx].displayNumber,
+      )
+
+      for (let i = targetNumbers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[targetNumbers[i], targetNumbers[j]] = [
+          targetNumbers[j],
+          targetNumbers[i],
+        ]
+      }
+
+      targetIndices.forEach((targetIdx, i) => {
+        nextSeats[targetIdx] = {
+          ...nextSeats[targetIdx],
+          displayNumber: targetNumbers[i],
         }
-        return seat
       })
 
-      setSeats(finalSeats)
+      // 💡 6. 최종 상태 반영 및 종료
+      setSeats(nextSeats)
       setIsShuffling(false)
       setIsJustFinished(true)
 
@@ -192,7 +206,7 @@ const App: React.FC = () => {
                 disabled={seats.length === 0 || hasValueError}
                 className="px-6 py-2 bg-violet-600 hover:bg-violet-700 disabled:bg-slate-300 text-white font-bold text-sm rounded-xl shadow-xs transition-all duration-150 cursor-pointer disabled:cursor-not-allowed transform active:scale-98"
               >
-                배치 시작하기
+                🎲 자리 섞기
               </button>
             )}
           </div>
